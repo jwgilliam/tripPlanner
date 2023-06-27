@@ -5,7 +5,7 @@ export const parkComponent = (park) => {
   return `
     <div class="park-card">
       <h2 class="park-name">${park.fullName}</h2>
-      <image src="${park.images[0].url}" alt="${park.images[0].altText}">
+      <image class="park-image" src="${park.images[0].url}" alt="${park.images[0].altText}">
       <p class="park-description">${park.description}</p>
       <button class="park-button" id=${park.id}>Plan a Trip</button>
     </div>
