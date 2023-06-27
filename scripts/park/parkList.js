@@ -10,7 +10,9 @@ export const parkList = () => {
 const render = (parks) => {
   let targetElement = document.querySelector(".park-list");
 
-  targetElement.innerHTML = parks.map((park) => {
-    return parkComponent(park);
-  });
+  targetElement.innerHTML = parks
+    .map((park) => {
+      return parkComponent(park);
+    })
+    .join("");
 };

@@ -1,8 +1,7 @@
 // API documentation at: https://www.nps.gov/subjects/developer/api-documentation.htm#/
-// https://developer.nps.gov/api/v1/parks?stateCode=${selectedState}&limit=25&fields=addresses&sort=states&api_key=${settings.npsKey}
 import settings from "../.settings.js";
 
-let parks = [{ description: "test" }];
+let parks = [];
 let stateCodes = [];
 
 export const useParks = () => {
@@ -29,6 +28,6 @@ export const getParks = (state) => {
   )
     .then((response) => response.json())
     .then((response) => {
-      parks = response.slice();
+      parks = response.data;
     });
 };
