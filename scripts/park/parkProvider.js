@@ -3,6 +3,7 @@ import settings from "../.settings.js";
 
 let parks = [];
 let stateCodes = [];
+let parkCode;
 
 export const useParks = () => {
   return parks;
@@ -10,6 +11,15 @@ export const useParks = () => {
 
 export const useStateCodes = () => {
   return stateCodes;
+};
+
+export const useParkCode = () => {
+  return parkCode;
+};
+
+export const setParkCode = (code) => {
+  parkCode = code;
+  console.log(parkCode);
 };
 
 export const getStateCodes = () => {

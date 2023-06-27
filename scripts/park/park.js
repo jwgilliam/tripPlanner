@@ -1,15 +1,8 @@
-import { useParks } from "./parkProvider.js";
+import { useParks, setParkCode } from "./parkProvider.js";
 
 export const parkComponent = (park) => {
   eventManager();
-  return `
-    <div class="park-card">
-      <h2 class="park-name">${park.fullName}</h2>
-      <image class="park-image" src="${park.images[0].url}" alt="${park.images[0].altText}">
-      <p class="park-description">${park.description}</p>
-      <button class="park-button" id=${park.id}>Plan a Trip</button>
-    </div>
-    `;
+  return render(park);
 };
 
 const eventManager = () => {
@@ -26,9 +19,33 @@ const eventManager = () => {
       );
 
       document.querySelector(".park-list").innerHTML =
-        parkComponent(selectedPark);
+        renderDetail(selectedPark);
+
+      // run scripts for attraction/places lists here. Or maybe use events?
     }
   });
+};
+
+const render = (park) => {
+  return `
+    <div class="park-card">
+      <h2 class="park-name">${park.fullName}</h2>
+      <image class="park-image" src="${park.images[0].url}" alt="${park.images[0].altText}">
+      <p class="park-description">${park.description}</p>
+      <button class="park-button" id=${park.id}>Plan a Trip</button>
+    </div>
+    `;
+};
+
+const renderDetail = (park) => {
+  setParkCode(park.parkCode);
+  return `
+  <div class="park-card">
+    <h2 class="park-name">${park.fullName}</h2>
+    <image class="park-image" src="${park.images[0].url}" alt="${park.images[0].altText}">
+    <p class="park-description">${park.description}</p>
+  </div>
+  `;
 };
 
 /* <div class="park-address">
