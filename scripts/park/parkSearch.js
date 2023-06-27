@@ -16,7 +16,7 @@ const eventManager = () => {
         document.querySelector(".search-selector").selectedIndex - 1;
       let states = useStateCodes();
 
-      getParks(states[selectedState]).then(parkList);
+      getParks(states[selectedState]).then(parkList).then(render);
     }
   });
 };

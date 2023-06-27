@@ -19,7 +19,6 @@ export const useParkCode = () => {
 
 export const setParkCode = (code) => {
   parkCode = code;
-  console.log(parkCode);
 };
 
 export const getStateCodes = () => {

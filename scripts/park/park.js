@@ -22,6 +22,7 @@ const eventManager = () => {
         renderDetail(selectedPark);
 
       // run scripts for attraction/places lists here. Or maybe use events?
+      // This may be problematic since it is running for each instance in the park list.
     }
   });
 };
@@ -39,6 +40,8 @@ const render = (park) => {
 
 const renderDetail = (park) => {
   setParkCode(park.parkCode);
+
+  // Going to add more detail later. Leaving simple for now.
   return `
   <div class="park-card">
     <h2 class="park-name">${park.fullName}</h2>
