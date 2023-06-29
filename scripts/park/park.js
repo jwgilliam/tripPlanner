@@ -1,4 +1,5 @@
 import { useParks, setParkCode } from "./parkProvider.js";
+import { placeList } from "../place/placeList.js";
 
 export const parkComponent = (park) => {
   eventManager();
@@ -23,6 +24,7 @@ const eventManager = () => {
 
       // run scripts for attraction/places lists here. Or maybe use events?
       // This may be problematic since it is running for each instance in the park list.
+      placeList();
     }
   });
 };
