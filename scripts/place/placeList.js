@@ -10,11 +10,16 @@ export const placeList = () => {
 
 const render = () => {
   const places = usePlaces();
-  const targetElement = document.querySelector(".place-list");
+  const targetElement = document.querySelector(".place-list-container");
 
-  targetElement.innerHTML = places
-    .map((place) => {
-      return placeComponent(place);
-    })
-    .join("");
+  targetElement.innerHTML = `
+  <div class="place-list">
+    ${places
+      .map((place) => {
+        return placeComponent(place);
+      })
+      .join("")}
+  </div>
+      <button class="park-list-submit">Save places</button>
+    `;
 };

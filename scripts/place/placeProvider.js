@@ -9,7 +9,7 @@ export const usePlaces = () => {
 export const getPlaces = (parkCode) => {
   let key = settings.key;
   return fetch(
-    `https://developer.nps.gov/api/v1/places?parkCode=${parkCode}&api_key=${key}`
+    `https://developer.nps.gov/api/v1/places?parkCode=${parkCode}&api_key=${key}&limit=10`
   )
     .then((response) => response.json())
     .then((response) => {
