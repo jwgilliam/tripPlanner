@@ -5,7 +5,6 @@ export const placeComponent = (place) => {
   <div class="place-body">
     ${place.bodyText}
   </div>
-  <label for ="${place.id}">Add to trip</label>
-  <input class="place-checkbox" type="checkbox" id=${place.id} name="${place.id}">
+  <button class="place-select-button" id=${place.id} name="${place.id}">Add to trip</button>
   `;
 };

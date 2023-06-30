@@ -16,3 +16,14 @@ export const getPlaces = (parkCode) => {
       places = response.data;
     });
 };
+
+// Probably need to change this one once the trip container is built. Probablly a put route to update trip object?
+export const savePlaces = (places) => {
+  return fetch(`http://localhost:8088/places`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(places),
+  });
+};
