@@ -14,6 +14,5 @@ export const getPlaces = (parkCode) => {
     .then((response) => response.json())
     .then((response) => {
       places = response.data;
-      console.log(places);
     });
 };
