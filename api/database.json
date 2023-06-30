@@ -237,5 +237,12 @@
       "abbreviation": "WY"
     }
   ],
-  "places": []
+  "places": [
+    {
+      "0": "A505D9DC-A1EB-4A0F-9394-B98049894ED9",
+      "1": "80A8101D-6B65-47BF-A403-C8B603A19C37",
+      "2": "41F5EF6B-1D44-483D-9E4F-C32FBDA8042D",
+      "id": 1
+    }
+  ]
 }

@@ -1,6 +1,10 @@
-import { getPlaces, usePlaces, savePlaces } from "./placeProvider.js";
+import {
+  getPlaces,
+  usePlaces,
+  savePlaces,
+} from "./placeProvider.js";
 import { useParkCode } from "../park/parkProvider.js";
-import { placeComponent } from "./place.js";
+import { placeComponent, placeComponentDetail } from "./place.js";
 
 export const placeList = () => {
   const parkCode = useParkCode();
@@ -16,7 +20,6 @@ const eventManager = () => {
   eventHub.addEventListener("click", (clickEvent) => {
     if (clickEvent.target.className === "place-select-button") {
       clickEvent.preventDefault();
-      // console.log("Added to trip");
 
       selectedPlaces.push(clickEvent.target.id);
       console.log(selectedPlaces);
@@ -27,7 +30,6 @@ const eventManager = () => {
 
     if (clickEvent.target.className === "place-remove-button") {
       clickEvent.preventDefault();
-      // console.log("Removed from trip");
 
       const removeIndex = selectedPlaces.indexOf(clickEvent.target.id);
       selectedPlaces.splice(removeIndex, 1);
@@ -39,10 +41,9 @@ const eventManager = () => {
 
     if (clickEvent.target.id === "place-list-submit") {
       clickEvent.preventDefault();
-      // console.log("Submit all", selectedPlaces);
+      // This code is problamatic. Since we do not use the db to render the list this isn't repeatable. 
 
-      savePlaces(selectedPlaces);
-      selectedPlaces = [];
+      savePlaces(selectedPlaces).then(renderDetail(selectedPlaces));
     }
   });
 };
@@ -51,15 +52,44 @@ const render = () => {
   const places = usePlaces();
   const targetElement = document.querySelector(".place-list-container");
 
+  console.log(places);
+
   targetElement.innerHTML = `
   <div class="place-list">
     ${places
       .map((place) => {
         return placeComponent(place);
       })
-      .join("")}
+      .join(" ")}
   </div>
   <button id="place-list-submit">Save places</button>
+    `;
+};
+
+const renderDetail = (selectedPlaces) => {
+  const places = usePlaces();
+  const targetElement = document.querySelector(".place-list-container");
+  let renderPlaces = [];
+
+  places.map((place) => {
+    selectedPlaces.map((selectedPlace) => {
+      if (selectedPlace === place.id) {
+        renderPlaces.push(place);
+      }
+    });
+  });
+
+  targetElement.innerHTML = `
+  <div class="place-list">
+   <h2>Places to Visit:</h2>
+   <ul class="place-ul">
+    ${renderPlaces
+      .map((place) => {
+        return placeComponentDetail(place);
+      })
+      .join(" ")}
+   </ul>
+  </div>
     `;
 };
 

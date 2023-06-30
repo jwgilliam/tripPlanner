@@ -8,3 +8,9 @@ export const placeComponent = (place) => {
   <button class="place-select-button" id=${place.id} name="${place.id}">Add to trip</button>
   `;
 };
+
+export const placeComponentDetail = (place) => {
+  return `
+  <li class="place-list-detail" id=${place.id}>${place.title}</li>
+    `;
+};
