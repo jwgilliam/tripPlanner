@@ -23,9 +23,19 @@ const tripListComponent = () => {
 
   eventHub.addEventListener("showTripsButtonClicked", (event) => {
     const trips = useTrips();
+    console.table(trips)
     render(trips);
 
 
+
+  })
+
+  eventHub.addEventListener("click", clickEvent => {
+    if (clickEvent.target.id === "show-trips") {
+      console.log("button clicky")
+      const message = new CustomEvent("showTripsButtonClicked");
+      eventHub.dispatchEvent(message);
+    }
   })
 }
 
