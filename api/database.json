@@ -236,5 +236,13 @@
       "name": "Wyoming",
       "abbreviation": "WY"
     }
+  ],
+  "trips": [
+    {
+      "id": 1,
+      "park": "Yellowstone",
+      "parkCode": "yell",
+      "thingsToDo": "idk"
+    }
   ]
 }
