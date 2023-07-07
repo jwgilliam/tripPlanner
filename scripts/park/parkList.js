@@ -3,10 +3,7 @@ import { parkComponent, renderDetail } from "./park.js";
 import { placeList } from "../place/placeList.js";
 
 export const parkList = () => {
-  let parks = useParks();
-
   eventManager();
-  render(parks);
 };
 
 const eventManager = () => {
@@ -26,8 +23,15 @@ const eventManager = () => {
         renderDetail(selectedPark);
 
       // run scripts for attraction/places lists here. Or maybe use events?
-      placeList();
+      const message = new CustomEvent("renderPlaceList");
+      eventHub.dispatchEvent(message);
     }
+  });
+
+  eventHub.addEventListener("renderParkList", (event) => {
+    console.log("rendering park list");
+    let parks = useParks();
+    render(parks);
   });
 };
 
@@ -40,5 +44,3 @@ const render = (parks) => {
     })
     .join("");
 };
-
-

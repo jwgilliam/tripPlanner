@@ -1,15 +1,8 @@
-import {
-  getPlaces,
-  usePlaces,
-  savePlaces,
-} from "./placeProvider.js";
+import { getPlaces, usePlaces, savePlaces } from "./placeProvider.js";
 import { useParkCode } from "../park/parkProvider.js";
 import { placeComponent, placeComponentDetail } from "./place.js";
 
 export const placeList = () => {
-  const parkCode = useParkCode();
-
-  getPlaces(parkCode).then(render);
   eventManager();
 };
 
@@ -44,13 +37,19 @@ const eventManager = () => {
       // This code is problamatic. Since we do not use the db to render the list this isn't repeatable.
       const message = new CustomEvent("placeListSubmitClicked", {
         detail: {
-          placesArray: selectedPlaces
-        }
-      })
-      eventHub.dispatchEvent(message)
+          placesArray: selectedPlaces,
+        },
+      });
+      eventHub.dispatchEvent(message);
 
       savePlaces(selectedPlaces).then(renderDetail(selectedPlaces));
     }
+  });
+
+  eventHub.addEventListener("renderPlaceList", (event) => {
+    const parkCode = useParkCode();
+
+    getPlaces(parkCode).then(render);
   });
 };
 
