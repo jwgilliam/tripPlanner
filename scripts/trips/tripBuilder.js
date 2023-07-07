@@ -9,7 +9,10 @@ const tripConstructor = () => {
   // build function to add data to trip object
   eventHub.addEventListener("placeListSubmitClicked", (event) => {
     tripConstruct.places = event.detail.placesArray
+    tripConstruct.parkCode = useParkCode()
     console.log(tripConstruct)
+    saveTrip(tripConstruct)
+
   })
 }
 
