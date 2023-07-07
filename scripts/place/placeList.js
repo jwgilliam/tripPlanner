@@ -34,7 +34,7 @@ const eventManager = () => {
 
     if (clickEvent.target.id === "place-list-submit") {
       clickEvent.preventDefault();
-      // This code is problamatic. Since we do not use the db to render the list this isn't repeatable.
+
       const message = new CustomEvent("placeListSubmitClicked", {
         detail: {
           placesArray: selectedPlaces,

@@ -1,6 +1,5 @@
 import { useParks } from "./parkProvider.js";
 import { parkComponent, renderDetail } from "./park.js";
-import { placeList } from "../place/placeList.js";
 
 export const parkList = () => {
   eventManager();
