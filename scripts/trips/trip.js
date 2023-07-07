@@ -1,4 +1,4 @@
-const tripComponent = () => {
+const tripComponent = (trip) => {
   return `
     <section class="trip_card">
     <section class="trip_header">
