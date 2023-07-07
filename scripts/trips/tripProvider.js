@@ -1,5 +1,13 @@
 let trips = []
+let newTrip = {}
 
+export const useNewTrip = () => {
+  return newTrip
+}
+
+export const setNewTrip = (newTripsArray) => {
+  newTrip = newTripsArray
+}
 const setTrips = (tripsArray) => {
   trips = tripsArray.slice()
 }
@@ -37,3 +45,4 @@ export const editTrips = tripObject => {
     body: JSON.stringify(tripObject)
   }).then(getTrips)
 }
+
