@@ -1,6 +1,6 @@
-import { getPlaces, usePlaces, savePlaces } from "./placeProvider.js";
+import { getPlaces, usePlaces } from "./placeProvider.js";
 import { useParkCode } from "../park/parkProvider.js";
-import { placeComponent, placeComponentDetail } from "./place.js";
+import { placeComponent } from "./place.js";
 
 export const placeList = () => {
   eventManager();
@@ -42,7 +42,7 @@ const eventManager = () => {
       });
       eventHub.dispatchEvent(message);
 
-      savePlaces(selectedPlaces).then(renderDetail(selectedPlaces));
+      // savePlaces(selectedPlaces).then(renderDetail(selectedPlaces));
     }
   });
 
@@ -71,32 +71,32 @@ const render = () => {
     `;
 };
 
-const renderDetail = (selectedPlaces) => {
-  const places = usePlaces();
-  const targetElement = document.querySelector(".place-list-container");
-  let renderPlaces = [];
+// const renderDetail = (selectedPlaces) => {
+//   const places = usePlaces();
+//   const targetElement = document.querySelector(".place-list-container");
+//   let renderPlaces = [];
 
-  places.map((place) => {
-    selectedPlaces.map((selectedPlace) => {
-      if (selectedPlace === place.id) {
-        renderPlaces.push(place);
-      }
-    });
-  });
+//   places.map((place) => {
+//     selectedPlaces.map((selectedPlace) => {
+//       if (selectedPlace === place.id) {
+//         renderPlaces.push(place);
+//       }
+//     });
+//   });
 
-  targetElement.innerHTML = `
-  <div class="place-list">
-   <h2>Places to Visit:</h2>
-   <ul class="place-ul">
-    ${renderPlaces
-      .map((place) => {
-        return placeComponentDetail(place);
-      })
-      .join(" ")}
-   </ul>
-  </div>
-    `;
-};
+//   targetElement.innerHTML = `
+//   <div class="place-list">
+//    <h2>Places to Visit:</h2>
+//    <ul class="place-ul">
+//     ${renderPlaces
+//       .map((place) => {
+//         return placeComponentDetail(place);
+//       })
+//       .join(" ")}
+//    </ul>
+//   </div>
+//     `;
+// };
 
 const addButton = (button) => {
   button.innerHTML = `<button class="place-select-button" id=${button.id} name="${button.id}">Add to trip</button>`;

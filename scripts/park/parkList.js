@@ -12,14 +12,14 @@ const eventManager = () => {
     if (clickEvent.target.className === `park-button-${clickEvent.target.id}`) {
       clickEvent.preventDefault();
 
-      let parks = useParks();
+      // let parks = useParks();
 
-      const selectedPark = parks.find(
-        (park) => park.id === clickEvent.target.id
-      );
+      // const selectedPark = parks.find(
+      //   (park) => park.id === clickEvent.target.id
+      // );
 
-      document.querySelector(".park-list").innerHTML =
-        renderDetail(selectedPark);
+      // document.querySelector(".park-list").innerHTML =
+      //   renderDetail(selectedPark);
 
       // run scripts for attraction/places lists here. Or maybe use events?
       const message = new CustomEvent("renderPlaceList");

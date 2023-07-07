@@ -1,5 +1,4 @@
 import { getStateCodes, useStateCodes, getParks } from "./parkProvider.js";
-// import { parkList } from "./parkList.js";
 
 export const parkSearch = () => {
   getStateCodes().then(render).then(eventManager);
