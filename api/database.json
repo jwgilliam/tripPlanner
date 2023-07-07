@@ -250,11 +250,31 @@
       ],
       "parkCode": "ciro",
       "id": 2
+    },
+    {
+      "places": [
+        "9BBC1461-813A-4F9D-8FE1-EC03A2CFC2F5",
+        "C39F1071-736B-49E6-864E-5BB417131FBB",
+        "3D9E4BAF-F3B8-43FB-93B7-A3A2ECD7E481"
+      ],
+      "parkCode": "bicr",
+      "id": 3
+    },
+    {
+      "places": [
+        "9BBC1461-813A-4F9D-8FE1-EC03A2CFC2F5",
+        "C39F1071-736B-49E6-864E-5BB417131FBB",
+        "3D9E4BAF-F3B8-43FB-93B7-A3A2ECD7E481"
+      ],
+      "parkCode": "bicr",
+      "id": 4
     }
   ],
   "places": [
     {
-      "0": "9C7DF210-186B-4E34-B542-71DAFB694114",
+      "0": "9BBC1461-813A-4F9D-8FE1-EC03A2CFC2F5",
+      "1": "C39F1071-736B-49E6-864E-5BB417131FBB",
+      "2": "3D9E4BAF-F3B8-43FB-93B7-A3A2ECD7E481",
       "id": 1
     }
   ]

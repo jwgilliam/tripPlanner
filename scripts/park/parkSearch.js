@@ -1,5 +1,4 @@
 import { getStateCodes, useStateCodes, getParks } from "./parkProvider.js";
-import { parkList } from "./parkList.js";
 
 export const parkSearch = () => {
   getStateCodes().then(render).then(eventManager);
@@ -16,7 +15,12 @@ const eventManager = () => {
         document.querySelector(".search-selector").selectedIndex - 1;
       let states = useStateCodes();
 
-      getParks(states[selectedState]).then(parkList).then(render);
+      getParks(states[selectedState])
+        .then(() => {
+          const message = new CustomEvent("renderParkList");
+          eventHub.dispatchEvent(message);
+        })
+        .then(render);
     }
   });
 };

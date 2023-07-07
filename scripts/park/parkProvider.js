@@ -4,6 +4,11 @@ import settings from "../.settings.js";
 let parks = [];
 let stateCodes = [];
 let parkCode;
+let selectedPark;
+
+export const useSelectedPark = () => {
+  return selectedPark;
+};
 
 export const useParks = () => {
   return parks;
@@ -19,6 +24,10 @@ export const useParkCode = () => {
 
 export const setParkCode = (code) => {
   parkCode = code;
+};
+
+export const setSelectedPark = (park) => {
+  selectedPark = park;
 };
 
 export const getStateCodes = () => {
@@ -38,5 +47,17 @@ export const getParks = (state) => {
     .then((response) => response.json())
     .then((response) => {
       parks = response.data;
+    });
+};
+
+export const getParkbyParkCode = (parkCode) => {
+  let key = settings.key;
+
+  return fetch(
+    `https://developer.nps.gov/api/v1/parks?parkCode=${parkCode}&api_key=${key}`
+  )
+    .then((response) => response.json())
+    .then((response) => {
+      setSelectedPark(response.data);
     });
 };
