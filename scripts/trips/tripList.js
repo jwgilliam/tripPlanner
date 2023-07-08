@@ -16,7 +16,10 @@ const tripListComponent = () => {
   <div class="trip_cards">
      ${element
         .map((currentElement) => {
-          return tripComponent(currentElement);
+          if (currentElement.park) {
+            return tripComponent(currentElement);
+          }
+
         })
         .join("")}
    </div>
