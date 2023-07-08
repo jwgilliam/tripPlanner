@@ -1,6 +1,10 @@
 import { getTrips, deleteTrip, useTrips } from "./tripProvider.js";
 import tripComponent from "./trip.js";
+import { getParkbyParkCode, useSelectedPark } from "../park/parkProvider.js";
+import { getPlacesById, useSelectedPlaces } from "../place/placeProvider.js";
 
+
+let trips = []
 const eventHub = document.querySelector(".container")
 
 const tripListComponent = () => {
@@ -21,13 +25,25 @@ const tripListComponent = () => {
   `
   }
 
+  const handleTripData = () => {
+    getTrips()
+      .then(() => {
+        trips = useTrips()
+      }).then(() => {
+        trips.map((currentElement) => {
+          getParkbyParkCode(currentElement.parkCode)
+            .then(() => {
+              currentElement.park = useSelectedPark()
+            }).then(() => {
+              render(trips)
+            })
+        })
+      })
+  }
+
+
   eventHub.addEventListener("showTripsButtonClicked", (event) => {
-    const trips = useTrips();
-    console.table(trips)
-    render(trips);
-
-
-
+    handleTripData()
   })
 
   eventHub.addEventListener("click", clickEvent => {

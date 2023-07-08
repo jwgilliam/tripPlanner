@@ -58,6 +58,6 @@ export const getParkbyParkCode = (parkCode) => {
   )
     .then((response) => response.json())
     .then((response) => {
-      setSelectedPark(response.data);
+      setSelectedPark(response.data[0]);
     });
 };

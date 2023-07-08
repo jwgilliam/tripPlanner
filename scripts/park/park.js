@@ -16,7 +16,7 @@ const render = (park) => {
 };
 
 export const renderDetail = (park) => {
-  setParkCode(park.parkCode);
+  // setParkCode(park.parkCode);
 
   // Going to add more detail later. Leaving simple for now.
   return `
