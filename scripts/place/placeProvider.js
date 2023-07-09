@@ -22,22 +22,21 @@ export const getPlaces = (parkCode) => {
     });
 };
 
-export const getPlacesById = (placeIds) => {
-  let key = settings.key;
-  let getPlaces = [];
+export const getPlacesById = (placeId) => {
 
-  placeIds.map((placeId) => {
-    fetch(
-      `https://developer.nps.gov/api/v1/places?id=${placeId}&api_key=${key}&limit=10`
-    )
-      .then((response) => response.json())
-      .then((response) => {
-        getPlaces.push(response.data[0]);
-        console.log(getPlaces);
-      });
-  });
+  let key = settings.key
 
-  selectedPlaces = getPlaces;
+  return fetch(
+    `https://developer.nps.gov/api/v1/places?id=${placeId}&api_key=${key}&limit=10`
+  )
+    .then((response) => response.json())
+    .then((response) => {
+      selectedPlaces = response.data[0]
+      console.log(selectedPlaces)
+    });
+
+
+
 };
 
 // Probably need to change this one once the trip container is built. Probablly a put route to update trip object?

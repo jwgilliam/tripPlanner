@@ -38,11 +38,40 @@ const tripListComponent = () => {
             .then(() => {
               currentElement.park = useSelectedPark()
             }).then(() => {
+              handlePlaceData()
+
+            }).then(() => {
               render(trips)
             })
+          // need to solve async problem with place data
         })
       })
   }
+
+  const handlePlaceData = () => {
+
+
+    trips.map((currentElement) => {
+      let newPlaces = []
+      console.log(currentElement.places)
+      currentElement.places.map((place) => {
+        console.log(place)
+        // console.log(place)
+        getPlacesById(place).then(() => {
+          newPlaces.push(useSelectedPlaces())
+          console.log(place)
+        }).then(() => {
+          currentElement.updatedPlaces = newPlaces
+          console.log(currentElement.updatedPlaces)
+        })
+      })
+
+
+    })
+
+  }
+
+
 
 
   eventHub.addEventListener("showTripsButtonClicked", (event) => {
@@ -51,7 +80,7 @@ const tripListComponent = () => {
 
   eventHub.addEventListener("click", clickEvent => {
     if (clickEvent.target.id === "show-trips") {
-      console.log("button clicky")
+      // console.log("button clicky")
       const message = new CustomEvent("showTripsButtonClicked");
       eventHub.dispatchEvent(message);
     }

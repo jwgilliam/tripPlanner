@@ -28,7 +28,7 @@ const eventManager = () => {
   });
 
   eventHub.addEventListener("renderParkList", (event) => {
-    console.log("rendering park list");
+    // console.log("rendering park list");
     let parks = useParks();
     render(parks);
   });
